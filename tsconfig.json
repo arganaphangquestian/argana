@@ -20,6 +20,7 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["./components/*"],
+      "@contexts/*": ["./contexts/*"],
       "@hooks/*": ["./hooks/*"],
       "@services/*": ["./services/*"],
       "@themes/*": ["./themes/*"],

@@ -1,10 +1,9 @@
-import useTheme from "@hooks/use_theme";
+import { useThemeAppDispatch } from "@contexts/theme_context";
 import Head from "next/head";
 import { Container, Center, Glitch } from "./index_style";
 
 const Index = () => {
-  // TODO: Change this into Context Hooks State Management
-  const [theme, toggleTheme] = useTheme();
+  const themeDispatch = useThemeAppDispatch();
   return (
     <>
       <Head>
@@ -15,7 +14,7 @@ const Index = () => {
         <Center>
           <Glitch
             text={`Argana Phangquestian`}
-            onClick={() => toggleTheme(!theme)}
+            onClick={() => themeDispatch({ type: "toggle" })}
           >
             Argana Phangquestian
           </Glitch>

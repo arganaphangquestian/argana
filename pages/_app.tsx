@@ -1,7 +1,8 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import useTheme from "@hooks/use_theme";
 import DarkTheme from "@themes/dark";
 import LightTheme from "@themes/light";
+import { ThemeAppProvider, useThemeAppState } from "@contexts/theme_context";
+import React from "react";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -15,17 +16,25 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Application = ({ Component, pageProps }) => {
-  // TODO: Change this into Context Hooks State Management
-  const [theme, toggleTheme] = useTheme();
+const RootApp = ({ children }) => {
+  const theme = useThemeAppState();
   return (
-    <ThemeProvider theme={theme ? LightTheme : DarkTheme}>
+    <ThemeProvider theme={theme.isLightTheme ? LightTheme : DarkTheme}>
       <>
         <GlobalStyle />
-        <Component {...pageProps} />
-        <p onClick={() => toggleTheme(!theme)}>{JSON.stringify(theme)}</p>
+        {children}
       </>
     </ThemeProvider>
+  );
+};
+
+const Application = ({ Component, pageProps }) => {
+  return (
+    <ThemeAppProvider>
+      <RootApp>
+        <Component {...pageProps} />
+      </RootApp>
+    </ThemeAppProvider>
   );
 };
 

@@ -18,7 +18,7 @@ const Center = styled.div`
 `;
 
 const Glitch = styled.h1`
-  color: black;
+  color: ${({ theme }) => theme.colors.secondaryColor};
   position: relative;
   margin: 0 auto;
   text-align: center;
@@ -95,8 +95,8 @@ const Glitch = styled.h1`
     left: 0px;
     text-shadow: -1px 0 red;
     top: 0;
-    color: black;
-    background: white;
+    color: ${({ theme }) => theme.colors.secondaryColor};
+    background: ${({ theme }) => theme.colors.backgroundColor};
     overflow: hidden;
     animation: noise-anim 2s infinite linear alternate-reverse;
   }
@@ -172,8 +172,8 @@ const Glitch = styled.h1`
     left: -2px;
     text-shadow: 1px 0 blue;
     top: 0;
-    color: black;
-    background: white;
+    color: ${({ theme }) => theme.colors.secondaryColor};
+    background: ${({ theme }) => theme.colors.backgroundColor};
     overflow: hidden;
     animation: noise-anim-2 15s infinite linear alternate-reverse;
   }
